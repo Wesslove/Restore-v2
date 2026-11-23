@@ -19,7 +19,10 @@ builder.Services.AddDbContext<StoreContext>(options =>
 
 //  Elle permet de configurer les services de l'application, comme les contrôleurs et la base de données.
 var app = builder.Build();
-
+app.UseCors(opt =>
+{
+    opt.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:3000");
+});
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
